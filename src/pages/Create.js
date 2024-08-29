@@ -24,33 +24,25 @@ export default function Create() {
         <Box
             bgcolor={"#141d30"}
             color={"white"}
-         height= "100vh"
+         height= "110vh"
            
         >
-            <Stack
-                direction="row"
-                alignItems="center"
-                justifyContent="space-between"
-                spacing={2}
-                mb={4}
-                mx={25}
-                
-            >
                 <Typography
-                    variant="h6"
                     textAlign="center"
-                    mt={3}
+                    direction="row"
+                    alignItems="center"                
+                    mb={2}
                 >
                     GitSearch
                 </Typography>
                 
-            </Stack>
+          
 
             <Stack
                 direction={["column", "row"]}
                 alignItems="center"
                 spacing={2}
-                m={3}
+                mr={3}
                 backgroundColor="#1d2b47"
                 borderRadius={9}
                 sx={{
@@ -90,6 +82,7 @@ export default function Create() {
                                     sx={{
                                         zIndex: 1,
                                         borderRadius: 2,
+                                        mr: 2,
                                         bgcolor: '#0379ff', 
                                         color: 'white', 
                                         boxShadow: 'none', 
@@ -120,116 +113,118 @@ export default function Create() {
             </Stack>
 
                 
-            <Box
-    bgcolor="#1d2b47"
-    borderRadius={5}
-    display="flex"
-    flexDirection="column"
-    justifyContent="center"
-    alignItems="center"
-    m={3}
-    maxWidth="90%" 
-    overflow="hidden"
->
-    <Box
-        py={3}
-        borderRadius={3}
-        display="flex"
-        flexDirection="row"
-        alignItems="center"
-        textAlign="left"
-        gap={5}
-        flexWrap="wrap"
-        justifyContent="center" 
-    >
-        <img
-            alt="User Image"
-            src={userData.avatar_url}
-            style={{ width: 120, height: 120, borderRadius: '50%' }}
-        />
-        <Box
-   
-        ml={2}
-        >
-            <Typography variant="h4" fontFamily={'bold'}>{userData.name}</Typography>
-            <Typography>
-                <a href={userData.html_url} target="_blank" rel="noopener noreferrer" style={{ color: '#0379ff', textDecoration: 'none' }}>
-                    {userData.login}
-                </a>
-            </Typography>
-
-            <Typography variant="caption">Joined on {new Date(userData.created_at).toDateString()}</Typography>
-        </Box>
-    </Box>
-
-    <Stack flexWrap={"wrap"} direction="row" justifyContent="space-evenly" my={5}>
-              <Stack alignItems="center">
-                <Typography>Repos</Typography>
-                <Typography variant="h6" sx={{ fontWeight: "bold" }}>
-                  {userData.public_repos}
-                </Typography>
-              </Stack>
-              <Stack mx={5} alignItems="center">
-                <Typography>Followers</Typography>
-                <Typography variant="h6" sx={{ fontWeight: "bold" }}>
-                  {userData.followers}
-                </Typography>
-              </Stack>
-              <Stack alignItems="center">
-                <Typography>Following</Typography>
-                <Typography variant="h6" sx={{ fontWeight: "bold" }}>
-                  {userData.following}
-                </Typography>
-              </Stack>
-            </Stack>
-
-    <Stack
-              alignItems={["left", "center"]}
-              m={1}
-              direction={["column", "row"]}
+{userData && (
+                <Box
+                
+                bgcolor="#1d2b47"
+                borderRadius={5}
+                display="flex"
+                flexDirection="column"
+                justifyContent="center"
+                alignItems="center"
+                m={3}
+                maxWidth="90%" 
+                overflow="hidden"
             >
-              <Stack>
-                <Stack alignItems={"center"} m={1} direction={"row"}>
-                  <IconButton sx={{ backgroundColor: "white" }}>
-                    <AddLocationIcon fontSize="small" />
-                  </IconButton>
-                  <Typography mx={2}>
-                    {userData.location || "Location not provided"}
-                  </Typography>
-                </Stack>
-                <Stack alignItems={"center"} m={1} direction={"row"}>
-                  <IconButton sx={{ backgroundColor: "white" }}>
-                    <ApartmentIcon fontSize="small" />
-                  </IconButton>
-                  <Typography marginLeft={2}>
-                  {userData.company || "None"}
-                  </Typography>
-                </Stack>
-              </Stack>
-              <Stack ml={[0, 3]}>
-                <Stack alignItems={"center"} m={1} direction={"row"}>
-                  <IconButton sx={{ backgroundColor: "white" }}>
-                    <TwitterIcon fontSize="small" />
-                  </IconButton>
-                  <Typography marginLeft={2}>
-                    {userData.twitter_username || "Twitter not linked"}
-                  </Typography>
-                </Stack>
-                <Stack direction={"row"} alignItems={"center"} m={1}>
-                  <IconButton sx={{ backgroundColor: "white" }}>
-                    <GitHubIcon fontSize="small" />
-                  </IconButton>
-                  <Typography marginLeft={2}>
-                    <a href={userData.html_url} style={{ color: "#ffffff" }}>
-                      GitHub Profile
-                    </a>
-                  </Typography>
-                </Stack>
-              </Stack>
-            </Stack>
-
-
-</Box>
+                <Box
+                    py={3}
+                    borderRadius={3}
+                    display="flex"
+                    flexDirection="row"
+                    alignItems="center"
+                    textAlign="left"
+                    gap={5}
+                    flexWrap="wrap"
+                    justifyContent="center" 
+                >
+                    <img
+                        alt="User Image"
+                        src={userData.avatar_url}
+                        style={{ width: 120, height: 120, borderRadius: '50%' }}
+                    />
+                    <Box
+                    ml={2}
+                    >
+                        <Typography variant="h4" fontFamily={'bold'}>{userData.name}</Typography>
+                        <Typography>
+                            <a href={userData.html_url} target="_blank" rel="noopener noreferrer" style={{ color: '#0379ff', textDecoration: 'none' }}>
+                                {userData.login}
+                            </a>
+                        </Typography>
+            
+                        <Typography variant="caption">Joined on {new Date(userData.created_at).toDateString()}</Typography>
+                    </Box>
+                </Box>
+            
+                <Stack flexWrap={"wrap"} direction="row" justifyContent="space-evenly" my={1}>
+                          <Stack alignItems="center">
+                            <Typography>Repos</Typography>
+                            <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+                              {userData.public_repos}
+                            </Typography>
+                          </Stack>
+                          <Stack mx={5} alignItems="center">
+                            <Typography>Followers</Typography>
+                            <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+                              {userData.followers}
+                            </Typography>
+                          </Stack>
+                          <Stack alignItems="center">
+                            <Typography>Following</Typography>
+                            <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+                              {userData.following}
+                            </Typography>
+                          </Stack>
+                        </Stack>
+            
+                <Stack
+                          alignItems={["left", "center"]}
+                          m={1}
+                          direction={["column", "row"]}
+                        >
+                          <Stack>
+                            <Stack alignItems={"center"} m={1} direction={"row"}>
+                              <IconButton sx={{ backgroundColor: "white" }}>
+                                <AddLocationIcon fontSize="small" />
+                              </IconButton>
+                              <Typography mx={2}>
+                                {userData.location || "Location not provided"}
+                              </Typography>
+                            </Stack>
+                            <Stack alignItems={"center"} m={1} direction={"row"}>
+                              <IconButton sx={{ backgroundColor: "white" }}>
+                                <ApartmentIcon fontSize="small" />
+                              </IconButton>
+                              <Typography marginLeft={2}>
+                              {userData.company || "None"}
+                              </Typography>
+                            </Stack>
+                          </Stack>
+                          <Stack ml={[0, 3]}>
+                            <Stack alignItems={"center"} m={1} direction={"row"}>
+                              <IconButton sx={{ backgroundColor: "white" }}>
+                                <TwitterIcon fontSize="small" />
+                              </IconButton>
+                              <Typography marginLeft={2}>
+                                {userData.twitter_username || "Twitter not linked"}
+                              </Typography>
+                            </Stack>
+                            <Stack direction={"row"} alignItems={"center"} m={1}>
+                              <IconButton sx={{ backgroundColor: "white" }}>
+                                <GitHubIcon fontSize="small" />
+                              </IconButton>
+                              <Typography marginLeft={2}>
+                                <a href={userData.html_url} style={{ color: "#ffffff" }}>
+                                  GitHub Profile
+                                </a>
+                              </Typography>
+                            </Stack>
+                          </Stack>
+                        </Stack>
+            
+            
+            </Box>
+)}
             </Box>
     
             
